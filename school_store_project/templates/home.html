@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+        Welcome to the school store.
+{% endblock %}
+
+{% block title %}
+      SchoolStore.com
+{% endblock %}
+
+{% block content %}
+<div style="background-color: pink;">
+{% if user.is_authenticated %}
+    <div class="card home-page" style="background-color: lightcoral;" >
+      <h5 class="card-header">Alert</h5>
+      <div class="card-body">
+        <h5 class="card-title">Log out</h5>
+        <p class="card-text">Hello {{user.username}}, For log out click the button below.</p>
+        <a href="{% url 'school_store_app:logout' %}" class="btn btn-outline-info" style="background-color: pink;">Log Out</a>
+      </div>
+    </div>
+{% else %}
+    <div class="card mt-3 home-page custom-card">
+  <div class="card-header">
+    College Description
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      Welcome to
+National Model Matriculation School
+We the students of National Model Matriculation School present before you about our school, which is our second home. Our learning is a voyage undertaken in the unfathomable ocean of knowledge with the motive "Life to the Lees".
+        Abundant knowledge at the feather touch, Astounding facilities, Innumerable and innovative concepts. An array of extra-curricular activities, Facilities for Indoor & Outdoor sports and games, Etiquette and value based education, Contests at Intra and Inter level. A broad outlook to encounter the competitive world; all these liberate us to bloom, blossom and thrive in order to become a well-groomed personalities.
+    </p>
+  </div>
+         <div class="card-body">
+            <img src="{% static 'img/college.jpg' %}" class="img-fluid" alt="College Image" style="width:1500px;">
+        </div>
+</div>
+
+{% endif %}
+    </div>
+{% endblock %}
